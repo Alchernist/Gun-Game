@@ -38,7 +38,7 @@ public class Game extends JFrame implements ActionListener {
 		add(panel2, BorderLayout.SOUTH);
 
 		Panel panel3 = new Panel();
-		panel3.setBackground(Color.CYAN);
+		panel3.setBackground(Color.green);
 		add(panel3, BorderLayout.EAST);
 
 		Panel panel4 = new Panel();
