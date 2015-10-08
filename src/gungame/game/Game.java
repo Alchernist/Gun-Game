@@ -6,7 +6,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -112,7 +111,6 @@ public class Game extends JFrame implements ActionListener {
 			setForeground(Color.white);
 			setFont(new Font("", Font.BOLD, 35));
 		}
-
 	}
 
 	/*******************************************************************
@@ -132,7 +130,7 @@ public class Game extends JFrame implements ActionListener {
 		g.drawLine(557, 510, 587, 600); // right leg
 		g.drawLine(587, 600, 607, 600);
 
-		Graphics2D g2d = (Graphics2D) g; // HEALTH /*may need to create seprate
+		Graphics2D g2d = (Graphics2D) g; // HEALTH 
 		// objects */
 		g2d.setColor(Color.RED);
 		g2d.fillOval(590, 710, 30, 30);
