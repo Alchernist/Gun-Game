@@ -1,8 +1,6 @@
 package gungame.game;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -29,21 +27,49 @@ public class Game extends JFrame implements ActionListener {
 		setSize(1024, 768);
 		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		getContentPane().setBackground(Color.red);
+		getContentPane().setBackground(Color.CYAN);
+		setLayout(null);
+		
 
 		Panel panel = new Panel(); // panel
-		add(panel, BorderLayout.NORTH);
+		panel.setBounds(0, 0, 1024, 70 );
+		add(panel);
 
 		Panel panel2 = new Panel(); // panel
-		add(panel2, BorderLayout.SOUTH);
+		panel2.setBounds(0, 670, 1024, 70 );
+		add(panel2);
 
-		Panel panel3 = new Panel();
-		panel3.setBackground(Color.green);
-		add(panel3, BorderLayout.EAST);
+		Panel panelLeft = new Panel();
+		panelLeft.setBackground(Color.blue);
+		panelLeft.setBounds(0, 70, 150, 200 ); //x,y, width, length
+		add(panelLeft);
+		
+		Panel panelLeft2 = new Panel();
+		panelLeft2.setBackground(Color.green);
+		panelLeft2.setBounds(0, 270, 150, 200 );
+		add(panelLeft2);
+		
+		
+		Panel panelLeft3 = new Panel();
+		panelLeft3.setBackground(Color.blue);
+		panelLeft3.setBounds(0, 470, 150, 200 );
+		add(panelLeft3);
+		
 
-		Panel panel4 = new Panel();
-		panel4.setBackground(Color.CYAN);
-		add(panel4, BorderLayout.WEST);
+		Panel panelRight = new Panel();
+		panelRight.setBackground(Color.blue);
+		panelRight.setBounds(874, 70, 150, 200 );
+		add(panelRight);
+		
+		Panel panelRight2 = new Panel();
+		panelRight2.setBackground(Color.green);
+		panelRight2.setBounds(874, 270, 150, 200 );
+		add(panelRight2);
+		
+		Panel panelRight3 = new Panel();
+		panelRight3.setBackground(Color.blue);
+		panelRight3.setBounds(874, 470, 150, 200 );
+		add(panelRight3);
 
 		Label label = new Label();
 		label.timer();
@@ -64,7 +90,6 @@ public class Game extends JFrame implements ActionListener {
 		private static final long serialVersionUID = 1L;
 
 		private Panel() { // constructor for panel
-			setPreferredSize(new Dimension(200, 60));
 			setBackground(Color.black);
 		}
 	}
@@ -110,9 +135,9 @@ public class Game extends JFrame implements ActionListener {
 		Graphics2D g2d = (Graphics2D) g; // HEALTH /*may need to create seprate
 		// objects */
 		g2d.setColor(Color.RED);
-		g2d.fillOval(590, 720, 30, 30);
-		g2d.fillOval(622, 720, 30, 30);
-		g2d.fillOval(654, 720, 30, 30);
+		g2d.fillOval(590, 710, 30, 30);
+		g2d.fillOval(622, 710, 30, 30);
+		g2d.fillOval(654, 710, 30, 30);
 
 	}
 
