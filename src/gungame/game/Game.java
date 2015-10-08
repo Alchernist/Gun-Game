@@ -30,7 +30,7 @@ public class Game extends JFrame implements ActionListener {
 		getContentPane().setBackground(Color.CYAN);
 		setLayout(null);
 		
-
+		//panels for top and bottom
 		Panel panel = new Panel(); // panel
 		panel.setBounds(0, 0, 1024, 70 );
 		add(panel);
@@ -39,6 +39,7 @@ public class Game extends JFrame implements ActionListener {
 		panel2.setBounds(0, 670, 1024, 70 );
 		add(panel2);
 
+		// panels for left and right (6 panels total)
 		Panel panelLeft = new Panel();
 		panelLeft.setBackground(Color.blue);
 		panelLeft.setBounds(0, 70, 150, 200 ); //x,y, width, length
@@ -49,13 +50,11 @@ public class Game extends JFrame implements ActionListener {
 		panelLeft2.setBounds(0, 270, 150, 200 );
 		add(panelLeft2);
 		
-		
 		Panel panelLeft3 = new Panel();
 		panelLeft3.setBackground(Color.blue);
 		panelLeft3.setBounds(0, 470, 150, 200 );
 		add(panelLeft3);
 		
-
 		Panel panelRight = new Panel();
 		panelRight.setBackground(Color.blue);
 		panelRight.setBounds(874, 70, 150, 200 );
@@ -70,7 +69,8 @@ public class Game extends JFrame implements ActionListener {
 		panelRight3.setBackground(Color.blue);
 		panelRight3.setBounds(874, 470, 150, 200 );
 		add(panelRight3);
-
+		
+		//labels
 		Label label = new Label();
 		label.timer();
 		panel.add(label);
