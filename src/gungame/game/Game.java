@@ -16,12 +16,8 @@ public class Game extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	static int seconds = 0;
 
-	public static void main(String[] args) { // main method
-		new Game().setVisible(true);
 
-	}
-
-	private Game() { // constructor for frame
+	public Game() { // constructor for frame
 		super("Lets Win this Hackathon!");
 		setSize(1024, 768);
 		setResizable(false);
@@ -80,6 +76,7 @@ public class Game extends JFrame implements ActionListener {
 		label2.setText("Health: ");
 		panel2.add(label2);
 
+		setVisible(true);
 	}
 
 	/*******************************************************************
