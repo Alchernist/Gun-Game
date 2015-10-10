@@ -21,12 +21,20 @@ public class Player extends Creature {
 		animUp = new Animation(500, Assets.player_up);
 		animLeft = new Animation(500, Assets.player_left);
 		animRight = new Animation(500, Assets.player_right);
+		health = 3;
 	}
 	
-	public void dealDamage() {
+	public void hit() {
+		if (isDead()) {
+			return;
+		}
 		health -= 1;
 	}
 
+	public boolean isDead() {
+		return health <= 0;
+	}
+	
 	public void tick() {
 		//Animations
 		animDown.tick();

@@ -54,33 +54,51 @@ public class GameState extends State {
 			State.setState(handler.getGame().getPauseState());
 		}
 		if (handler.getKeyManager().keyDownOnce(KeyEvent.VK_Q)) {
-			
-		}
-		if (handler.getKeyManager().keyDownOnce(KeyEvent.VK_A)) {
-			
-		}
-		if (handler.getKeyManager().keyDownOnce(KeyEvent.VK_Z)) {
-	
-		}
-		if (handler.getKeyManager().keyDownOnce(KeyEvent.VK_O)) {
-		
-		}
-		if (handler.getKeyManager().keyDownOnce(KeyEvent.VK_K)) {
-			
-		}
-		if (handler.getKeyManager().keyDownOnce(KeyEvent.VK_M)) {
-			
-		}
-		
-		
-		
-		
-		else if (handler.getKeyManager().keyDownOnce(KeyEvent.VK_Q)) {
 			if (spotsTaken[0]) {
 				damageEnemy(0); //hit the enemy at this spot
 			}
 			else {
-				player.dealDamage(); //player missed target, so deal damage to self
+				player.hit(); //player missed target, so deal damage to self
+			}
+		}
+		if (handler.getKeyManager().keyDownOnce(KeyEvent.VK_A)) {
+			if (spotsTaken[1]) {
+				damageEnemy(1); //hit the enemy at this spot
+			}
+			else {
+				player.hit(); //player missed target, so deal damage to self
+			}
+		}
+		if (handler.getKeyManager().keyDownOnce(KeyEvent.VK_Z)) {
+			if (spotsTaken[2]) {
+				damageEnemy(2); //hit the enemy at this spot
+			}
+			else {
+				player.hit(); //player missed target, so deal damage to self
+			}
+		}
+		if (handler.getKeyManager().keyDownOnce(KeyEvent.VK_O)) {
+			if (spotsTaken[3]) {
+				damageEnemy(3); //hit the enemy at this spot
+			}
+			else {
+				player.hit(); //player missed target, so deal damage to self
+			}
+		}
+		if (handler.getKeyManager().keyDownOnce(KeyEvent.VK_K)) {
+			if (spotsTaken[4]) {
+				damageEnemy(4); //hit the enemy at this spot
+			}
+			else {
+				player.hit(); //player missed target, so deal damage to self
+			}
+		}
+		if (handler.getKeyManager().keyDownOnce(KeyEvent.VK_M)) {
+			if (spotsTaken[5]) {
+				damageEnemy(5); //hit the enemy at this spot
+			}
+			else {
+				player.hit(); //player missed target, so deal damage to self
 			}
 		}
 	}
@@ -102,6 +120,7 @@ public class GameState extends State {
 		}
 		for (int i = 0; i < enemies.size(); i++) {
 			if (enemies.get(i).isDead()) {
+				spotsTaken[enemies.get(i).getSpot()] = false;
 				enemies.set(i, null);
 				enemies.remove(i);
 				i++;
@@ -109,6 +128,9 @@ public class GameState extends State {
 		}
 		seconds++;
 		player.tick();
+		if (player.isDead()) {
+			State.setState(handler.getGame().getGameOverState()); //change this to gameover state
+		}
 	}
 
 	public void render(Graphics g) {

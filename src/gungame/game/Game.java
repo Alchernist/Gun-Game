@@ -1,14 +1,5 @@
 package gungame.game;
 
-import gungame.display.Display;
-import gungame.gfx.Assets;
-import gungame.input.KeyManager;
-import gungame.states.GameState;
-import gungame.states.MenuState;
-import gungame.states.PauseState;
-import gungame.states.SettingsState;
-import gungame.states.State;
-
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.io.File;
@@ -19,6 +10,16 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+
+import gungame.display.Display;
+import gungame.gfx.Assets;
+import gungame.input.KeyManager;
+import gungame.states.GameOverState;
+import gungame.states.GameState;
+import gungame.states.MenuState;
+import gungame.states.PauseState;
+import gungame.states.SettingsState;
+import gungame.states.State;
 
 public class Game implements Runnable {
 
@@ -37,6 +38,7 @@ public class Game implements Runnable {
 	private State menuState;
 	private State pauseState;
 	private State settingsState;
+	private State gameOverState;
 
 	// Input
 	private KeyManager keyManager;
@@ -63,6 +65,7 @@ public class Game implements Runnable {
 		menuState = new MenuState(handler);
 		pauseState = new PauseState(handler);
 		settingsState = new SettingsState(handler);
+		gameOverState = new GameOverState(handler);
 		State.setState(menuState);
 
 		//music
@@ -133,6 +136,15 @@ public class Game implements Runnable {
 
 	public State getSettingsState() {
 		return settingsState;
+	}
+	
+	public State getGameOverState() {
+		return gameOverState;
+	}
+	
+	public void resetGame() {
+		gameState = null;
+		gameState = new GameState(handler);
 	}
 
 	public void run() {
