@@ -2,14 +2,6 @@ package gungame.game;
 
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
-import java.io.File;
-import java.io.IOException;
-
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 
 import gungame.display.Display;
 import gungame.gfx.Assets;
@@ -68,29 +60,6 @@ public class Game implements Runnable {
 		gameOverState = new GameOverState(handler);
 		State.setState(menuState);
 
-		//music
-		try {
-			// Open an audio input stream.
-			File soundFile = new File("res/No Life.wav"); // you could also get
-															// the sound file
-															// with an URL
-			AudioInputStream audioIn = AudioSystem
-					.getAudioInputStream(soundFile);
-			// Get a sound clip resource.
-			Clip clip = AudioSystem.getClip();
-			// Open audio clip and load samples from the audio input stream.
-			clip.open(audioIn);
-			clip.start();
-			//clip.stop();
-		} catch (UnsupportedAudioFileException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (LineUnavailableException e) {
-			e.printStackTrace();
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	private void tick() {

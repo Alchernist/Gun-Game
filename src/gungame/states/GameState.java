@@ -3,14 +3,17 @@ package gungame.states;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Random;
 
 import gungame.entities.creatures.Player;
 import gungame.entities.creatures.enemies.ArmouredSoldier;
 import gungame.entities.creatures.enemies.Enemy;
+import gungame.entities.creatures.enemies.HealthPack;
 import gungame.entities.creatures.enemies.Soldier;
 import gungame.game.Handler;
+import gungame.gfx.Assets;
 
 public class GameState extends State {
 	
@@ -21,6 +24,7 @@ public class GameState extends State {
 	private boolean[] spotsTaken;
 	private int seconds;
 	private Integer score;
+	private BufferedImage gameScreen;
 
 	//actual game goes here
 	public GameState(Handler handler) {
@@ -28,12 +32,18 @@ public class GameState extends State {
 		player = new Player(handler, 240.0f, 150.0f);
 		enemies = new ArrayList<Enemy>(); //6 spots
 		
+		gameScreen = Assets.game_screen;
+		
 		rand = new Random();
 		spot = 0;
 		typeOfEnemy = 0; //0 is empty, 1 is soldier, 2 is hostage, 3 is armoured
 		spotsTaken = new boolean[6];
 		seconds = 0;
 		score = 0;
+	}
+	
+	public Player getPlayer() {
+		return player;
 	}
 	
 	public int getScore() {
@@ -51,8 +61,11 @@ public class GameState extends State {
 		else if (typeOfEnemy == 1) {
 			e = new Soldier(handler, 10, 10, spot);
 		}
-		else {
+		else if (typeOfEnemy == 2) {
 			e = new ArmouredSoldier(handler, 10, 10, spot);
+		}
+		else {
+			e = new HealthPack(handler, 10, 10, spot);
 		}
 		spotsTaken[spot] = true;
 		enemies.add(e);
@@ -73,7 +86,7 @@ public class GameState extends State {
 				damageEnemy(0); //hit the enemy at this spot
 			}
 			else {
-				player.hit(); //player missed target, so deal damage to self
+				player.hit(1); //player missed target, so deal damage to self
 			}
 			player.setPosition(0);
 		}
@@ -82,7 +95,7 @@ public class GameState extends State {
 				damageEnemy(1); //hit the enemy at this spot
 			}
 			else {
-				player.hit(); //player missed target, so deal damage to self
+				player.hit(1); //player missed target, so deal damage to self
 			}
 			player.setPosition(1);
 		}
@@ -91,7 +104,7 @@ public class GameState extends State {
 				damageEnemy(2); //hit the enemy at this spot
 			}
 			else {
-				player.hit(); //player missed target, so deal damage to self
+				player.hit(1); //player missed target, so deal damage to self
 			}
 			player.setPosition(2);
 		}
@@ -100,7 +113,7 @@ public class GameState extends State {
 				damageEnemy(3); //hit the enemy at this spot
 			}
 			else {
-				player.hit(); //player missed target, so deal damage to self
+				player.hit(1); //player missed target, so deal damage to self
 			}
 			player.setPosition(3);
 		}
@@ -109,7 +122,7 @@ public class GameState extends State {
 				damageEnemy(4); //hit the enemy at this spot
 			}
 			else {
-				player.hit(); //player missed target, so deal damage to self
+				player.hit(1); //player missed target, so deal damage to self
 			}
 			player.setPosition(4);
 		}
@@ -118,7 +131,7 @@ public class GameState extends State {
 				damageEnemy(5); //hit the enemy at this spot
 			}
 			else {
-				player.hit(); //player missed target, so deal damage to self
+				player.hit(1); //player missed target, so deal damage to self
 			}
 			player.setPosition(5);
 		}
@@ -135,7 +148,7 @@ public class GameState extends State {
 	
 	public void tick() { //make a speed variable that changes time of next enemy
 		getInput();
-		if (seconds >= 120) {
+		if (seconds >= 60) {
 			placeEnemy();
 			seconds = 0;
 		}
@@ -147,7 +160,7 @@ public class GameState extends State {
 		
 		for (int i = 0; i < enemies.size(); i++) {
 			if (enemies.get(i).attack()) {
-				player.hit();
+				player.hit(enemies.get(i).getDamage());
 				enemies.get(i).kill();
 			}
 			if (enemies.get(i).isDead()) {
@@ -166,8 +179,7 @@ public class GameState extends State {
 	}
 
 	public void render(Graphics g) {
-		g.setColor(Color.CYAN);
-		g.fillRect(0, 0, 640, 480);
+		g.drawImage(gameScreen, 0, 0, 640, 480, null);
 		player.render(g);
 		drawEnemies(g);
 		g.setColor(Color.BLACK);

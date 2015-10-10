@@ -7,11 +7,13 @@ import java.awt.image.BufferedImage;
 
 import gungame.game.Handler;
 import gungame.gfx.Assets;
+import gungame.sounds.SoundPlayer;
 import gungame.states.State;
 
 public class Player extends Creature {
 	
 	private int position;
+	private int maxHealth;
 	private BufferedImage image;
 	//Animations
 	//private Animation animDown, animUp, animLeft, animRight;
@@ -24,7 +26,15 @@ public class Player extends Creature {
 //		animLeft = new Animation(500, Assets.player_left);
 //		animRight = new Animation(500, Assets.player_right);
 		health = 3;
+		maxHealth = 3;
 		position = 0; //idle
+	}
+	
+	public void heal(int health) {
+		SoundPlayer.playSound("res/sounds/Healthsound.wav");
+		this.health += health;
+		if (this.health > maxHealth) 
+			this.health = maxHealth;
 	}
 	
 	public void setPosition(int direction) {
@@ -53,11 +63,11 @@ public class Player extends Creature {
 			break;
 		}
 	}
-	public void hit() {
+	public void hit(int damage) {
 		if (isDead()) {
 			return;
 		}
-		health -= 1;
+		health -= damage;
 	}
 
 	public boolean isDead() {

@@ -15,11 +15,12 @@ public class Assets {
 	
 	
 	public static BufferedImage player, dirt, grass, stone, tree;
-	public static BufferedImage menu_screen, pause_screen, settings_screen;
+	public static BufferedImage game_screen, menu_screen, pause_screen, settings_screen;
 
 	public static void init(){
 		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/textures/ff6recastpalettes.png"));
 		
+		game_screen = ImageLoader.loadImage("/textures/gamebackground.png");
 		menu_screen = sheet.crop(width, 0, width, height);
 		pause_screen = sheet.crop(width * 2, 0, width, height);
 		settings_screen = sheet.crop(width * 2, 0, width, height);
