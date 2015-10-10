@@ -9,6 +9,7 @@ import gungame.gfx.Assets;
 public class ArmouredSoldier extends Enemy {
 	
 	private BufferedImage image; //example left top
+	private int as, bs; //used to move enemy toward player
 
 	public ArmouredSoldier(Handler handler, float x, float y, int spot) {
 		super(handler, x, y, spot);
@@ -26,37 +27,49 @@ public class ArmouredSoldier extends Enemy {
 			image = Assets.dirt;
 			a = 10;
 			b = 10;
+			as = 1;
+			bs = 1;
 			break;
 		case 1:
 			image = Assets.dirt;
 			a = 10;
 			b = 195;
+			as = 1;
 			break;
 		case 2:
 			image = Assets.dirt;
 			a = 10;
 			b = 430;
+			as = 1;
+			bs = -1;
 			break;
 		case 3:
 			image = Assets.dirt;
 			a = 600;
 			b = 10;
+			as = -1;
+			bs = 1;
 			break;
 		case 4:
 			image = Assets.dirt;
 			a = 600;
 			b = 195;
+			as = -1;
 			break;
 		case 5:
 			image = Assets.dirt;
 			a = 600;
 			b = 430;
+			as = -1;
+			bs = -1;
 			break;
 		}
 	}
 
 	public void tick() {
 		time++;
+		a += as;
+		b += bs;
 	}
 
 	public void render(Graphics g) {

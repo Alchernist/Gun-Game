@@ -135,7 +135,7 @@ public class GameState extends State {
 	
 	public void tick() { //make a speed variable that changes time of next enemy
 		getInput();
-		if (seconds >= 180) {
+		if (seconds >= 120) {
 			placeEnemy();
 			seconds = 0;
 		}
