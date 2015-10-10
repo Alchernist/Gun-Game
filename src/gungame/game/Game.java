@@ -8,13 +8,8 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
-
-import javax.imageio.ImageIO;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -94,71 +89,71 @@ public class Game extends JFrame implements ActionListener {
 		label2.setText("Health: ");
 		panel2.add(label2);
 		
-//		
-//		//images
-//		ImageIcon background = new ImageIcon("C:\\Users\\William\\Desktop\\pic1.png");
-//		ImageIcon background1 = new ImageIcon("C:\\Users\\William\\Desktop\\pic2.png");
-//		ImageIcon background2 = new ImageIcon("C:\\Users\\William\\Desktop\\pic3.png");
-//		ImageIcon background3 = new ImageIcon("C:\\Users\\William\\Desktop\\pic4.png");
-//		ImageIcon background4 = new ImageIcon("C:\\Users\\William\\Desktop\\pic5.png");
-//		ImageIcon background5 = new ImageIcon("C:\\Users\\William\\Desktop\\pic6.png");
-//		
-//		Image img = background.getImage();
-//		Image img1 = background1.getImage();
-//		Image img2 = background2.getImage();
-//		Image img3 = background3.getImage();
-//		Image img4 = background4.getImage();
-//		Image img5 = background5.getImage();
-//		
-//		BufferedImage bi = new BufferedImage(img.getWidth(null), img.getHeight(null), BufferedImage.TYPE_INT_ARGB);
-//		BufferedImage bi1 = new BufferedImage(img1.getWidth(null), img1.getHeight(null), BufferedImage.TYPE_INT_ARGB);
-//		BufferedImage bi2 = new BufferedImage(img2.getWidth(null), img2.getHeight(null), BufferedImage.TYPE_INT_ARGB);
-//		BufferedImage bi3 = new BufferedImage(img3.getWidth(null), img3.getHeight(null), BufferedImage.TYPE_INT_ARGB);
-//		BufferedImage bi4 = new BufferedImage(img4.getWidth(null), img4.getHeight(null), BufferedImage.TYPE_INT_ARGB);
-//		BufferedImage bi5 = new BufferedImage(img5.getWidth(null), img5.getHeight(null), BufferedImage.TYPE_INT_ARGB);
-//		
-//		Graphics picG = bi.createGraphics();
-//		Graphics picG1 = bi1.createGraphics();
-//		Graphics picG2 = bi2.createGraphics();
-//		Graphics picG3 = bi3.createGraphics();
-//		Graphics picG4 = bi4.createGraphics();
-//		Graphics picG5 = bi5.createGraphics();
-//		
-//		picG.drawImage(img, 0, 145, 150, 200, null);// works
-//		picG1.drawImage(img1, 0, 620, 150, 200, null);//works
-//		picG2.drawImage(img2, 0, 0, 150, 200, null); // works
-//		picG3.drawImage(img3, 0, 240, 150, 200, null); // works
-//		picG4.drawImage(img4, 0, 150, 150, 200, null);//works
-//		picG5.drawImage(img5, 0, 375, 150, 180, null);//works
-//		
-//		ImageIcon newBackground = new ImageIcon(bi);
-//		ImageIcon newBackground1 = new ImageIcon(bi1);
-//		ImageIcon newBackground2 = new ImageIcon(bi2);
-//		ImageIcon newBackground3 = new ImageIcon(bi3);
-//		ImageIcon newBackground4 = new ImageIcon(bi4);
-//		ImageIcon newBackground5 = new ImageIcon(bi5);
-//	
-//		//stored images in an ArrayList
-//		ArrayList<ImageIcon> myPics = new ArrayList<ImageIcon>();
-//		myPics.add(newBackground);
-//		myPics.add(newBackground1);
-//		myPics.add(newBackground2);
-//		myPics.add(newBackground3);
-//		myPics.add(newBackground4);
-//		myPics.add(newBackground5);
-//		
-//		//chooses random image to be displayed in panel
-//		Random rand = new Random();
-//		int index = rand.nextInt(myPics.size());
-//		Label labelB = new Label();
-//		labelB.setBounds(0, 0, 150, 250);
-//		labelB.setIcon(myPics.get(index));
-//		panelLeft.add(labelB);
-//				
-//		
-//		for(int i = 0; i< 5; i++){ 	// sets all panels to no layout
-//			myPanels.get(i).setLayout(null);
-//		}
+		
+		//images
+		ImageIcon background = new ImageIcon("res/pic1.png");
+		ImageIcon background1 = new ImageIcon("res/pic2.png");
+		ImageIcon background2 = new ImageIcon("res/pic3.png");
+		ImageIcon background3 = new ImageIcon("res/pic4.png");
+		ImageIcon background4 = new ImageIcon("res/pic5.png");
+		ImageIcon background5 = new ImageIcon("res/pic6.png");
+		
+		Image img = background.getImage();
+		Image img1 = background1.getImage();
+		Image img2 = background2.getImage();
+		Image img3 = background3.getImage();
+		Image img4 = background4.getImage();
+		Image img5 = background5.getImage();
+		
+		BufferedImage bi = new BufferedImage(img.getWidth(null), img.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+		BufferedImage bi1 = new BufferedImage(img1.getWidth(null), img1.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+		BufferedImage bi2 = new BufferedImage(img2.getWidth(null), img2.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+		BufferedImage bi3 = new BufferedImage(img3.getWidth(null), img3.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+		BufferedImage bi4 = new BufferedImage(img4.getWidth(null), img4.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+		BufferedImage bi5 = new BufferedImage(img5.getWidth(null), img5.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+		
+		Graphics picG = bi.createGraphics();
+		Graphics picG1 = bi1.createGraphics();
+		Graphics picG2 = bi2.createGraphics();
+		Graphics picG3 = bi3.createGraphics();
+		Graphics picG4 = bi4.createGraphics();
+		Graphics picG5 = bi5.createGraphics();
+		
+		picG.drawImage(img, 0, 145, 150, 200, null);// works
+		picG1.drawImage(img1, 0, 620, 150, 200, null);//works
+		picG2.drawImage(img2, 0, 0, 150, 200, null); // works
+		picG3.drawImage(img3, 0, 240, 150, 200, null); // works
+		picG4.drawImage(img4, 0, 150, 150, 200, null);//works
+		picG5.drawImage(img5, 0, 375, 150, 180, null);//works
+		
+		ImageIcon newBackground = new ImageIcon(bi);
+		ImageIcon newBackground1 = new ImageIcon(bi1);
+		ImageIcon newBackground2 = new ImageIcon(bi2);
+		ImageIcon newBackground3 = new ImageIcon(bi3);
+		ImageIcon newBackground4 = new ImageIcon(bi4);
+		ImageIcon newBackground5 = new ImageIcon(bi5);
+	
+		//stored images in an ArrayList
+		ArrayList<ImageIcon> myPics = new ArrayList<ImageIcon>();
+		myPics.add(newBackground);
+		myPics.add(newBackground1);
+		myPics.add(newBackground2);
+		myPics.add(newBackground3);
+		myPics.add(newBackground4);
+		myPics.add(newBackground5);
+		
+		//chooses random image to be displayed in panel
+		Random rand = new Random();
+		int index = rand.nextInt(myPics.size());
+		Label labelB = new Label();
+		labelB.setBounds(0, 0, 150, 250);
+		labelB.setIcon(myPics.get(index));
+		panelLeft.add(labelB);
+				
+		
+		for(int i = 0; i< 5; i++){ 	// sets all panels to no layout
+			myPanels.get(i).setLayout(null);
+		}
 		
 		setVisible(true);
 			
