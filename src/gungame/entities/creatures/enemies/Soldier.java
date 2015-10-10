@@ -16,11 +16,10 @@ public class Soldier extends Enemy {
 		damage = 1;
 		lifeSpan = 3;
 		score = 1;
-		
 		init();
-		
-		
+		time = 0;
 	}
+	
 	
 	public void init() {
 		switch(spot) {
@@ -56,9 +55,15 @@ public class Soldier extends Enemy {
 			break;
 		}
 	}
+	
+	public boolean attack() {
+		if (time >= 180) // 3 seconds to live
+			return true;
+		return false;
+	}
 
 	public void tick() {
-		
+		time++;
 	}
 
 	public void render(Graphics g) {

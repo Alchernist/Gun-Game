@@ -18,8 +18,6 @@ public class ArmouredSoldier extends Enemy {
 		score = 3;
 		
 		init();
-		
-		
 	}
 	
 	public void init() {
@@ -58,11 +56,17 @@ public class ArmouredSoldier extends Enemy {
 	}
 
 	public void tick() {
-		
+		time++;
 	}
 
 	public void render(Graphics g) {
 		g.drawImage(image, a, b, null);
+	}
+
+	public boolean attack() {
+		if (time >= 240) // 3 seconds to live
+			return true;
+		return false;
 	}
 	
 }

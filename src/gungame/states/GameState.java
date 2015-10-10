@@ -135,11 +135,21 @@ public class GameState extends State {
 	
 	public void tick() { //make a speed variable that changes time of next enemy
 		getInput();
-		if (seconds >= 10) {
+		if (seconds >= 180) {
 			placeEnemy();
 			seconds = 0;
 		}
+		
+		//update all enemies
 		for (int i = 0; i < enemies.size(); i++) {
+			enemies.get(i).tick();
+		}
+		
+		for (int i = 0; i < enemies.size(); i++) {
+			if (enemies.get(i).attack()) {
+				player.hit();
+				enemies.get(i).kill();
+			}
 			if (enemies.get(i).isDead()) {
 				spotsTaken[enemies.get(i).getSpot()] = false;
 				score += enemies.get(i).getScore();

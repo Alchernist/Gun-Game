@@ -5,13 +5,20 @@ import gungame.game.Handler;
 
 import java.awt.Graphics;
 
-public class Enemy extends Creature {
+public abstract class Enemy extends Creature {
 	
 	protected int damage;
 	protected int spot;
 	protected int lifeSpan;
 	protected int score;
 	protected int a, b; //location of enemy
+	protected int time;
+	
+	public abstract boolean attack();
+	
+	public void kill() {
+		health = 0;
+	}
 	
 	public boolean isDead() {
 		return health <= 0;
