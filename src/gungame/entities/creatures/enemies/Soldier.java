@@ -25,34 +25,34 @@ public class Soldier extends Enemy {
 	public void init() {
 		switch(spot) {
 		case 0:
-			image = Assets.grass;
+			image = Assets.soldier_left_top;
 			a = 10;
 			b = 10;
 			break;
 		case 1:
-			image = Assets.grass;
+			image = Assets.soldier_left;
 			a = 10;
-			b = 195;
+			b = 185;
 			break;
 		case 2:
-			image = Assets.grass;
+			image = Assets.soldier_left_bottom;
 			a = 10;
-			b = 430;
+			b = 350;
 			break;
 		case 3:
-			image = Assets.grass;
-			a = 600;
+			image = Assets.soldier_right_top;
+			a = 500;
 			b = 10;
 			break;
 		case 4:
-			image = Assets.grass;
-			a = 600;
-			b = 195;
+			image = Assets.soldier_right;
+			a = 500;
+			b = 185;
 			break;
 		case 5:
-			image = Assets.grass;
-			a = 600;
-			b = 430;
+			image = Assets.soldier_right_bottom;
+			a = 500;
+			b = 350;
 			break;
 		}
 	}
@@ -62,7 +62,7 @@ public class Soldier extends Enemy {
 	}
 
 	public void render(Graphics g) {
-		g.drawImage(image, a, b, null);
+		g.drawImage(image, a, b, 130, 130, null);
 	}
 	
 }

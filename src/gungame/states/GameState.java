@@ -1,5 +1,6 @@
 package gungame.states;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class GameState extends State {
 	//actual game goes here
 	public GameState(Handler handler) {
 		super(handler);
-		player = new Player(handler, 270.0f, 190.0f);
+		player = new Player(handler, 240.0f, 150.0f);
 		enemies = new ArrayList<Enemy>(); //6 spots
 		
 		rand = new Random();
@@ -74,6 +75,7 @@ public class GameState extends State {
 			else {
 				player.hit(); //player missed target, so deal damage to self
 			}
+			player.setPosition(0);
 		}
 		if (handler.getKeyManager().keyDownOnce(KeyEvent.VK_A)) {
 			if (spotsTaken[1]) {
@@ -82,6 +84,7 @@ public class GameState extends State {
 			else {
 				player.hit(); //player missed target, so deal damage to self
 			}
+			player.setPosition(1);
 		}
 		if (handler.getKeyManager().keyDownOnce(KeyEvent.VK_Z)) {
 			if (spotsTaken[2]) {
@@ -90,6 +93,7 @@ public class GameState extends State {
 			else {
 				player.hit(); //player missed target, so deal damage to self
 			}
+			player.setPosition(2);
 		}
 		if (handler.getKeyManager().keyDownOnce(KeyEvent.VK_O)) {
 			if (spotsTaken[3]) {
@@ -98,6 +102,7 @@ public class GameState extends State {
 			else {
 				player.hit(); //player missed target, so deal damage to self
 			}
+			player.setPosition(3);
 		}
 		if (handler.getKeyManager().keyDownOnce(KeyEvent.VK_K)) {
 			if (spotsTaken[4]) {
@@ -106,6 +111,7 @@ public class GameState extends State {
 			else {
 				player.hit(); //player missed target, so deal damage to self
 			}
+			player.setPosition(4);
 		}
 		if (handler.getKeyManager().keyDownOnce(KeyEvent.VK_M)) {
 			if (spotsTaken[5]) {
@@ -114,6 +120,7 @@ public class GameState extends State {
 			else {
 				player.hit(); //player missed target, so deal damage to self
 			}
+			player.setPosition(5);
 		}
 	}
 	
@@ -128,7 +135,7 @@ public class GameState extends State {
 	
 	public void tick() { //make a speed variable that changes time of next enemy
 		getInput();
-		if (seconds >= 30) {
+		if (seconds >= 10) {
 			placeEnemy();
 			seconds = 0;
 		}
@@ -149,8 +156,11 @@ public class GameState extends State {
 	}
 
 	public void render(Graphics g) {
+		g.setColor(Color.CYAN);
+		g.fillRect(0, 0, 640, 480);
 		player.render(g);
 		drawEnemies(g);
+		g.setColor(Color.BLACK);
 		g.drawString("Score: " + score.toString(), 100, 100); //format this in a neater manner
 	}
 
