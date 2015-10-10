@@ -14,6 +14,7 @@ import gungame.entities.creatures.enemies.HealthPack;
 import gungame.entities.creatures.enemies.Soldier;
 import gungame.game.Handler;
 import gungame.gfx.Assets;
+import gungame.sounds.SoundPlayer;
 
 public class GameState extends State {
 
@@ -26,7 +27,7 @@ public class GameState extends State {
 	private Integer score;
 	private BufferedImage gameScreen;
 	private int nextLevelTimer;
-	private int[] levels = { 240, 200, 170, 140, 100, 80, 60, 50, 40 };
+	private int[] levels = {  170, 140, 100, 80, 60, 50, 40, 30, 20 };
 	private int level;
 	private int nextTime;
 
@@ -47,7 +48,7 @@ public class GameState extends State {
 		score = 0;
 		nextLevelTimer = 0;
 		level = 0;
-		nextTime = 600;
+		nextTime = 500;
 	}
 
 	public Player getPlayer() {
@@ -62,16 +63,19 @@ public class GameState extends State {
 		spot = rand.nextInt(6);
 		if (spotsTaken[spot])
 			return;
-		typeOfEnemy = rand.nextInt(4);
+		typeOfEnemy = rand.nextInt(5);
 		Enemy e;
 		if (typeOfEnemy == 0)
 			return;
-		else if (typeOfEnemy == 1) {
+		else if (typeOfEnemy == 1 || typeOfEnemy == 2) {
 			e = new Soldier(handler, 10, 10, spot);
-		} else if (typeOfEnemy == 2) {
+		} else if (typeOfEnemy == 3) {
 			e = new ArmouredSoldier(handler, 10, 10, spot);
 		} else {
-			e = new HealthPack(handler, 10, 10, spot);
+			if (rand.nextInt(100) < 20)
+				e = new HealthPack(handler, 10, 10, spot);
+			else 
+				return;
 		}
 		spotsTaken[spot] = true;
 		enemies.add(e);
@@ -94,6 +98,7 @@ public class GameState extends State {
 				player.hit(1); // player missed target, so deal damage to self
 			}
 			player.setPosition(0);
+			SoundPlayer.playSound("res/sounds/gunshot.wav");
 		}
 		if (handler.getKeyManager().keyDownOnce(KeyEvent.VK_A)) {
 			if (spotsTaken[1]) {
@@ -102,6 +107,7 @@ public class GameState extends State {
 				player.hit(1); // player missed target, so deal damage to self
 			}
 			player.setPosition(1);
+			SoundPlayer.playSound("res/sounds/gunshot.wav");
 		}
 		if (handler.getKeyManager().keyDownOnce(KeyEvent.VK_Z)) {
 			if (spotsTaken[2]) {
@@ -110,6 +116,7 @@ public class GameState extends State {
 				player.hit(1); // player missed target, so deal damage to self
 			}
 			player.setPosition(2);
+			SoundPlayer.playSound("res/sounds/gunshot.wav");
 		}
 		if (handler.getKeyManager().keyDownOnce(KeyEvent.VK_O)) {
 			if (spotsTaken[3]) {
@@ -118,6 +125,7 @@ public class GameState extends State {
 				player.hit(1); // player missed target, so deal damage to self
 			}
 			player.setPosition(3);
+			SoundPlayer.playSound("res/sounds/gunshot.wav");
 		}
 		if (handler.getKeyManager().keyDownOnce(KeyEvent.VK_K)) {
 			if (spotsTaken[4]) {
@@ -126,6 +134,7 @@ public class GameState extends State {
 				player.hit(1); // player missed target, so deal damage to self
 			}
 			player.setPosition(4);
+			SoundPlayer.playSound("res/sounds/gunshot.wav");
 		}
 		if (handler.getKeyManager().keyDownOnce(KeyEvent.VK_M)) {
 			if (spotsTaken[5]) {
@@ -134,8 +143,8 @@ public class GameState extends State {
 				player.hit(1); // player missed target, so deal damage to self
 			}
 			player.setPosition(5);
+			SoundPlayer.playSound("res/sounds/gunshot.wav");
 		}
-		//SoundPlayer.playSound("res/sounds");
 	}
 
 	public void damageEnemy(int spot) {
@@ -163,6 +172,7 @@ public class GameState extends State {
 		}
 
 		// update all enemies
+		player.tick();
 		for (int i = 0; i < enemies.size(); i++) {
 			enemies.get(i).tick();
 		}
@@ -182,7 +192,6 @@ public class GameState extends State {
 		}
 		seconds++;
 		nextLevelTimer++;
-		player.tick();
 		if (player.isDead()) {
 			State.setState(handler.getGame().getGameOverState()); // change this
 																	// to
@@ -196,7 +205,7 @@ public class GameState extends State {
 		player.render(g);
 		drawEnemies(g);
 		g.setColor(Color.BLACK);
-		g.drawString("Score: " + score.toString(), 100, 100); // format this in
+		g.drawString("Score: " + score.toString(), 300, 200); // format this in
 																// a neater
 																// manner
 	}

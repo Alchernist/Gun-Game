@@ -19,6 +19,8 @@ public class Soldier extends Enemy {
 		score = 1;
 		init();
 		time = 0;
+		System.out.println("Created Soldier");
+
 	}
 	
 	public void init() {
@@ -67,8 +69,10 @@ public class Soldier extends Enemy {
 	}
 	
 	public boolean attack() {
-		if (time >= 180) // 3 seconds to live
+		if (time >= 200) { // 3 seconds to live
+			time = 0;
 			return true;
+	}
 		return false;
 	}
 

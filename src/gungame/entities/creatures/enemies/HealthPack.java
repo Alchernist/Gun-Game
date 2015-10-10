@@ -18,6 +18,7 @@ public class HealthPack extends Enemy {
 		lifeSpan = 1;
 		init();
 		time = 0;
+		System.out.println("Created Soldier");
 	}
 	
 	public boolean isDead() {
@@ -52,7 +53,7 @@ public class HealthPack extends Enemy {
 	}
 
 	public void render(Graphics g) {
-		g.drawImage(image, a, b, 130, 130, null);
+		g.drawImage(image, a, b, 50, 50, null);
 	}
 	
 }

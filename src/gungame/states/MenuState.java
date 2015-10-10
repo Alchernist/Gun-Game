@@ -2,6 +2,7 @@ package gungame.states;
 
 import gungame.game.Handler;
 import gungame.gfx.Assets;
+import gungame.sounds.SoundPlayer;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -51,6 +52,7 @@ public class MenuState extends State {
 	private void select() {
 		if (currentChoice == 0) {
 			//start
+			SoundPlayer.playSound("res/sounds/song.wav");
 			State.setState(handler.getGame().getGameState());
 		}
 		else if (currentChoice == 1) {

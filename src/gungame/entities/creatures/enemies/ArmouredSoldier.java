@@ -17,13 +17,14 @@ public class ArmouredSoldier extends Enemy {
 
 	public ArmouredSoldier(Handler handler, float x, float y, int spot) {
 		super(handler, x, y, spot);
+		System.out.println("Armoured soldier");
 		health = 2;
 		damage = 1;
 		lifeSpan = 3;
 		score = 3;
 		// Animations
-		animLeft = new Animation(400, Assets.armoured_soldier_left);
-		animRight = new Animation(400, Assets.armoured_soldier_right);
+		animLeft = new Animation(200, Assets.armoured_soldier_left);
+		animRight = new Animation(200, Assets.armoured_soldier_right);
 
 		init();
 	}
@@ -93,8 +94,10 @@ public class ArmouredSoldier extends Enemy {
 	}
 
 	public boolean attack() {
-		if (time >= 240) // 3 seconds to live
+		if (time >= 240) {// 3 seconds to live
+			time = 0;
 			return true;
+		}
 		return false;
 	}
 
