@@ -14,7 +14,6 @@ import gungame.entities.creatures.enemies.HealthPack;
 import gungame.entities.creatures.enemies.Soldier;
 import gungame.game.Handler;
 import gungame.gfx.Assets;
-import gungame.sounds.SoundPlayer;
 
 public class GameState extends State {
 
@@ -136,7 +135,7 @@ public class GameState extends State {
 			}
 			player.setPosition(5);
 		}
-		SoundPlayer.playSound("res/sounds");
+		//SoundPlayer.playSound("res/sounds");
 	}
 
 	public void damageEnemy(int spot) {

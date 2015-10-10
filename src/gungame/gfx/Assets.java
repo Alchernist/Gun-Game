@@ -10,6 +10,10 @@ public class Assets {
 	public static BufferedImage soldier_left_top, soldier_left, soldier_left_bottom;
 	public static BufferedImage soldier_right_top, soldier_right, soldier_right_bottom;
 	
+	public static BufferedImage[] armoured_soldier_left, armoured_soldier_right;
+	public static BufferedImage armoured_soldier_left1, armoured_soldier_left2, armoured_soldier_left3;
+	public static BufferedImage armoured_soldier_right1, armoured_soldier_right2, armoured_soldier_right3;
+	
 	public static BufferedImage player_left_top, player_left, player_left_bottom;
 	public static BufferedImage player_right_top, player_right, player_right_bottom;
 	
@@ -34,13 +38,31 @@ public class Assets {
 		player_right_bottom = ImageLoader.loadImage("/player/player_right_bottom.png");
 		
 		//soldier pictures
-		soldier_left_top = ImageLoader.loadImage("/enemies/soldier_left_top.png");
-		soldier_left = ImageLoader.loadImage("/enemies/soldier_left.png");
-		soldier_left_bottom = ImageLoader.loadImage("/enemies/soldier_left_bottom.png");
-		soldier_right_top = ImageLoader.loadImage("/enemies/soldier_right_top.png");
-		soldier_right = ImageLoader.loadImage("/enemies/soldier_right.png");
-		soldier_right_bottom = ImageLoader.loadImage("/enemies/soldier_right_bottom.png");
+		soldier_left_top = ImageLoader.loadImage("/enemies/Soldier/soldier_left_top.png");
+		soldier_left = ImageLoader.loadImage("/enemies/Soldier/soldier_left.png");
+		soldier_left_bottom = ImageLoader.loadImage("/enemies/Soldier/soldier_left_bottom.png");
+		soldier_right_top = ImageLoader.loadImage("/enemies/Soldier/soldier_right_top.png");
+		soldier_right = ImageLoader.loadImage("/enemies/Soldier/soldier_right.png");
+		soldier_right_bottom = ImageLoader.loadImage("");
 		
+		//armoured soldier
+		armoured_soldier_left1 = ImageLoader.loadImage("/enemies/armouredSoldier/armoured_soldier_left1.png");
+		armoured_soldier_left2 = ImageLoader.loadImage("/enemies/armouredSoldier/armoured_soldier_left2.png");
+		armoured_soldier_left3 = ImageLoader.loadImage("/enemies/armouredSoldier/armoured_soldier_left3.png");
+		armoured_soldier_right1 = ImageLoader.loadImage("/enemies/armouredSoldier/armoured_soldier_right1.png");
+		armoured_soldier_right2 = ImageLoader.loadImage("/enemies/armouredSoldier/armoured_soldier_right2.png");
+		armoured_soldier_right3 = ImageLoader.loadImage("/enemies/armouredSoldier/armoured_soldier_right3.png");
+		
+		armoured_soldier_left = new BufferedImage[3];
+		armoured_soldier_right = new BufferedImage[3];
+		
+		armoured_soldier_left[0] = armoured_soldier_left1;
+		armoured_soldier_left[1] = armoured_soldier_left2;
+		armoured_soldier_left[2] = armoured_soldier_left3;
+		
+		armoured_soldier_right[0] = armoured_soldier_right1;
+		armoured_soldier_right[1] = armoured_soldier_right2;
+		armoured_soldier_right[2] = armoured_soldier_right3;
 		
 		//PLAYER SPRITES PROVIDED BY: AddFact
 		player = sheet.crop(width * 4, 0, width, height);
