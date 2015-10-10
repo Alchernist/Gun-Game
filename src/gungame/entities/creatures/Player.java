@@ -22,6 +22,10 @@ public class Player extends Creature {
 		animLeft = new Animation(500, Assets.player_left);
 		animRight = new Animation(500, Assets.player_right);
 	}
+	
+	public void dealDamage() {
+		health -= 1;
+	}
 
 	public void tick() {
 		//Animations
@@ -37,7 +41,7 @@ public class Player extends Creature {
 	private void getInput() {
 		
 		if (handler.getKeyManager().keyDownOnce(KeyEvent.VK_Q)) {
-			//kill the guy on the left side
+			//kill the guy on the top left side
 		}
 		if (handler.getKeyManager().keyDownOnce(KeyEvent.VK_ESCAPE)) 
 			State.setState(handler.getGame().getPauseState());

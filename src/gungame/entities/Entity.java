@@ -1,9 +1,8 @@
 package gungame.entities;
 
-import gungame.game.Handler;
-
 import java.awt.Graphics;
-import java.awt.Rectangle;
+
+import gungame.game.Handler;
 
 public abstract class Entity {
 	
