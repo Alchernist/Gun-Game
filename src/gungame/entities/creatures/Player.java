@@ -52,7 +52,7 @@ public class Player extends Creature {
 	}
 	
 	public void render(Graphics g) {
-		g.drawImage(Assets.enemy, (int) x, (int) y, null);
+		g.drawImage(getCurrentAnimationFrame(), (int) (x), (int) (y), width, height, null);
 	}
 	
 	private BufferedImage getCurrentAnimationFrame() {
