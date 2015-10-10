@@ -13,7 +13,7 @@ public class GameState extends State {
 	//actual game goes here
 	public GameState(Handler handler) {
 		super(handler);
-		player = new Player(handler, 220.0f, 200.0f);
+		player = new Player(handler, 270.0f, 190.0f);
 		
 	}
 
