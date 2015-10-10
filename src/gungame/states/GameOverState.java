@@ -1,17 +1,18 @@
 package gungame.states;
 
-import gungame.game.Handler;
-import gungame.gfx.Assets;
-
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
+import gungame.game.Handler;
+import gungame.gfx.Assets;
+
 public class GameOverState extends State {
 	private BufferedImage settingsScreen;
 	private int currentChoice = 0;
 	private Font font;
+	private int score;
 
 	public GameOverState(Handler handler) {
 		super(handler);
@@ -25,6 +26,7 @@ public class GameOverState extends State {
 	}
 
 	private void getInput() {
+		score = ((GameState) handler.getGame().getGameState()).getScore();
 		if (handler.getKeyManager().keyDownOnce(KeyEvent.VK_ENTER)) {
 			select();
 		}
@@ -47,7 +49,7 @@ public class GameOverState extends State {
 		g.drawImage(settingsScreen, 0, 0, 640, 480, null);
 
 		// render title
-		g.drawString("Game Over.", 260, 170);
+		g.drawString("Game Over. You're score is: " + score, 260, 170);
 
 		// draw menu options
 		g.setFont(font);

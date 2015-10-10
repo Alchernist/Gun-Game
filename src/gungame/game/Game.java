@@ -81,7 +81,7 @@ public class Game implements Runnable {
 			// Open audio clip and load samples from the audio input stream.
 			clip.open(audioIn);
 			clip.start();
-			clip.stop();
+			//clip.stop();
 		} catch (UnsupportedAudioFileException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

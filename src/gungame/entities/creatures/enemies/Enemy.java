@@ -1,5 +1,6 @@
-package gungame.entities.creatures;
+package gungame.entities.creatures.enemies;
 
+import gungame.entities.creatures.Creature;
 import gungame.game.Handler;
 
 import java.awt.Graphics;
@@ -8,6 +9,8 @@ public class Enemy extends Creature {
 	
 	protected int damage;
 	protected int spot;
+	protected int lifeSpan;
+	protected int score;
 	protected int a, b; //location of enemy
 	
 	public boolean isDead() {
@@ -23,6 +26,10 @@ public class Enemy extends Creature {
 			return;
 		}
 		health -= 1;
+	}
+	
+	public int getScore() {
+		return score;
 	}
 
 	public Enemy(Handler handler, float x, float y, int spot) { //delete x y parameters
@@ -67,10 +74,10 @@ public class Enemy extends Creature {
 	}
 
 	public void tick() {
-
+		
 	}
-	
+
 	public void render(Graphics g) {
-		g.drawRect(a, b, 30, 40);
+		
 	}
 }

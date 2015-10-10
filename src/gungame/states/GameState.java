@@ -5,8 +5,10 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Random;
 
-import gungame.entities.creatures.Enemy;
 import gungame.entities.creatures.Player;
+import gungame.entities.creatures.enemies.ArmouredSoldier;
+import gungame.entities.creatures.enemies.Enemy;
+import gungame.entities.creatures.enemies.Soldier;
 import gungame.game.Handler;
 
 public class GameState extends State {
@@ -17,6 +19,7 @@ public class GameState extends State {
 	private int spot, typeOfEnemy;
 	private boolean[] spotsTaken;
 	private int seconds;
+	private Integer score;
 
 	//actual game goes here
 	public GameState(Handler handler) {
@@ -29,6 +32,11 @@ public class GameState extends State {
 		typeOfEnemy = 0; //0 is empty, 1 is soldier, 2 is hostage, 3 is armoured
 		spotsTaken = new boolean[6];
 		seconds = 0;
+		score = 0;
+	}
+	
+	public int getScore() {
+		return score;
 	}
 	
 	public void placeEnemy() {
@@ -36,9 +44,15 @@ public class GameState extends State {
 		if (spotsTaken[spot])
 			return;
 		typeOfEnemy = rand.nextInt(4);
+		Enemy e;
 		if (typeOfEnemy == 0) 
 			return;
-		Enemy e = new Enemy(handler, 10, 10, spot);
+		else if (typeOfEnemy == 1) {
+			e = new Soldier(handler, 10, 10, spot);
+		}
+		else {
+			e = new ArmouredSoldier(handler, 10, 10, spot);
+		}
 		spotsTaken[spot] = true;
 		enemies.add(e);
 	}
@@ -121,6 +135,7 @@ public class GameState extends State {
 		for (int i = 0; i < enemies.size(); i++) {
 			if (enemies.get(i).isDead()) {
 				spotsTaken[enemies.get(i).getSpot()] = false;
+				score += enemies.get(i).getScore();
 				enemies.set(i, null);
 				enemies.remove(i);
 				i++;
@@ -136,6 +151,7 @@ public class GameState extends State {
 	public void render(Graphics g) {
 		player.render(g);
 		drawEnemies(g);
+		g.drawString("Score: " + score.toString(), 100, 100); //format this in a neater manner
 	}
 
 }

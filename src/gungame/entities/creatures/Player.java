@@ -64,7 +64,7 @@ public class Player extends Creature {
 	}
 	
 	public void render(Graphics g) {
-		g.drawImage(getCurrentAnimationFrame(), (int) (x), (int) (y), width, height, null);
+		g.drawImage(Assets.tree, (int) (x), (int) (y), width, height, null);
 	}
 	
 	private BufferedImage getCurrentAnimationFrame() {
