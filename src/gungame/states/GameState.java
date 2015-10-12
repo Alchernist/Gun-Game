@@ -27,7 +27,7 @@ public class GameState extends State {
 	private Integer score;
 	private BufferedImage gameScreen;
 	private int nextLevelTimer;
-	private int[] levels = {  170, 140, 100, 80, 60, 50, 40, 30, 20 };
+	private int[] levels = { 170, 140, 100, 80, 60, 50, 40, 30, 20 };
 	private int level;
 	private int nextTime;
 
@@ -180,6 +180,7 @@ public class GameState extends State {
 		for (int i = 0; i < enemies.size(); i++) {
 			if (enemies.get(i).attack()) {
 				player.hit(enemies.get(i).getDamage());
+				SoundPlayer.playSound("res/sounds/playerhit.wav");
 				enemies.get(i).kill();
 			}
 			if (enemies.get(i).isDead()) {
