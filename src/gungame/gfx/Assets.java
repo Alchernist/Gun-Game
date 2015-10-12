@@ -43,7 +43,7 @@ public class Assets {
 		soldier_left_bottom = ImageLoader.loadImage("/enemies/Soldier/soldier_left_bottom.png");
 		soldier_right_top = ImageLoader.loadImage("/enemies/Soldier/soldier_right_top.png");
 		soldier_right = ImageLoader.loadImage("/enemies/Soldier/soldier_right.png");
-		soldier_right_bottom = ImageLoader.loadImage("");
+		soldier_right_bottom = ImageLoader.loadImage("/enemies/Soldier/soldier_right_bottom.png");
 		
 		//armoured soldier
 		armoured_soldier_left1 = ImageLoader.loadImage("/enemies/armouredSoldier/armoured_soldier_left1.png");
