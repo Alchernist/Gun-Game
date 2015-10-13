@@ -17,6 +17,12 @@ public class Assets {
 	public static BufferedImage player_left_top, player_left, player_left_bottom;
 	public static BufferedImage player_right_top, player_right, player_right_bottom;
 	
+	public static BufferedImage healthpack;
+	
+	public static BufferedImage bulletProjectile;
+	
+	//public static BufferedImage[] blob_left, blob_right;
+	public static BufferedImage blueblob;;
 	
 	public static BufferedImage player, dirt, grass, stone, tree;
 	public static BufferedImage game_screen, menu_screen, pause_screen, settings_screen;
@@ -28,6 +34,12 @@ public class Assets {
 		menu_screen = sheet.crop(width, 0, width, height);
 		pause_screen = sheet.crop(width * 2, 0, width, height);
 		settings_screen = sheet.crop(width * 2, 0, width, height);
+		
+		//projectiles
+//		bulletProjectile = ImageLoader.loadImage("");
+		
+		//supplies
+		healthpack = ImageLoader.loadImage("/supplies/healthpack.png");
 		
 		//player pictures
 		player_left_top = ImageLoader.loadImage("/player/player_left_top.png");
@@ -44,6 +56,11 @@ public class Assets {
 		soldier_right_top = ImageLoader.loadImage("/enemies/Soldier/soldier_right_top.png");
 		soldier_right = ImageLoader.loadImage("/enemies/Soldier/soldier_right.png");
 		soldier_right_bottom = ImageLoader.loadImage("/enemies/Soldier/soldier_right_bottom.png");
+		
+		//blob
+		
+		blueblob = ImageLoader.loadImage("/enemies/blob/blue_blob.png");
+		
 		
 		//armoured soldier
 		armoured_soldier_left1 = ImageLoader.loadImage("/enemies/armouredSoldier/armoured_soldier_left1.png");

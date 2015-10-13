@@ -62,15 +62,15 @@ public abstract class Enemy extends Creature {
 			b = 430;
 			break;
 		case 3:
-			a = 600;
+			a = 575;
 			b = 10;
 			break;
 		case 4:
-			a = 600;
+			a = 575;
 			b = 195;
 			break;
 		case 5:
-			a = 600;
+			a = 575;
 			b = 430;
 			break;
 		}

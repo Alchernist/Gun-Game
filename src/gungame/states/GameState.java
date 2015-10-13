@@ -1,6 +1,7 @@
 package gungame.states;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
@@ -9,6 +10,7 @@ import java.util.Random;
 
 import gungame.entities.creatures.Player;
 import gungame.entities.creatures.enemies.ArmouredSoldier;
+import gungame.entities.creatures.enemies.Blob;
 import gungame.entities.creatures.enemies.Enemy;
 import gungame.entities.creatures.enemies.HealthPack;
 import gungame.entities.creatures.enemies.Soldier;
@@ -27,7 +29,7 @@ public class GameState extends State {
 	private Integer score;
 	private BufferedImage gameScreen;
 	private int nextLevelTimer;
-	private int[] levels = { 170, 140, 100, 80, 60, 50, 40, 30, 20 };
+	private int[] levels = { 40, 20, 20, 60, 50, 40, 30, 20, 5 };
 	private int level;
 	private int nextTime;
 
@@ -63,7 +65,7 @@ public class GameState extends State {
 		spot = rand.nextInt(6);
 		if (spotsTaken[spot])
 			return;
-		typeOfEnemy = rand.nextInt(5);
+		typeOfEnemy = rand.nextInt(6);
 		Enemy e;
 		if (typeOfEnemy == 0)
 			return;
@@ -71,7 +73,11 @@ public class GameState extends State {
 			e = new Soldier(handler, 10, 10, spot);
 		} else if (typeOfEnemy == 3) {
 			e = new ArmouredSoldier(handler, 10, 10, spot);
-		} else {
+		} else if (typeOfEnemy == 4) {
+			e = new Blob(handler, 10, 10, spot);
+		} 
+		
+		else {
 			if (rand.nextInt(100) < 20)
 				e = new HealthPack(handler, 10, 10, spot);
 			else 
@@ -205,8 +211,9 @@ public class GameState extends State {
 		g.drawImage(gameScreen, 0, 0, 640, 480, null);
 		player.render(g);
 		drawEnemies(g);
-		g.setColor(Color.BLACK);
-		g.drawString("Score: " + score.toString(), 300, 200); // format this in
+		g.setColor(Color.GREEN);
+		g.setFont(new Font("TimesRoman", Font.BOLD, 20));
+		g.drawString("Score: " + score.toString(), 294, 50); // format this in
 																// a neater
 																// manner
 	}

@@ -39,7 +39,7 @@ public class HealthPack extends Enemy {
 	}
 	
 	public void init() {
-		image = Assets.grass;
+		image = Assets.healthpack;
 	}
 	
 	public boolean attack() {
